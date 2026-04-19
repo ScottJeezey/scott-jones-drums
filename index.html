@@ -877,6 +877,46 @@
         }
 
         /* ============================================================
+           OLD SCHOOL BANNER
+        ============================================================ */
+        .old-school-banner {
+            position: relative;
+            width: 100%;
+            overflow: hidden;
+            background: #000;
+        }
+        .old-school-banner img {
+            display: block;
+            width: 100%;
+            max-height: 560px;
+            object-fit: cover;
+            object-position: center top;
+            opacity: 0.72;
+            -webkit-mask-image: linear-gradient(
+                to bottom,
+                black 40%,
+                transparent 100%
+            );
+            mask-image: linear-gradient(
+                to bottom,
+                black 40%,
+                transparent 100%
+            );
+        }
+        .old-school-caption {
+            position: absolute;
+            bottom: 2rem;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-size: 0.74rem;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+            color: rgba(255,255,255,0.28);
+            font-family: var(--font-body);
+        }
+
+        /* ============================================================
            FOOTER
         ============================================================ */
         footer {
@@ -959,7 +999,7 @@
                 linear-gradient(180deg, var(--bg-deep) 0%, rgba(6,0,14,0.55) 30%, rgba(6,0,14,0.55) 70%, var(--bg-deep) 100%),
                 url('images/stage.jpg');
             background-size: cover;
-            background-position: center 30%;
+            background-position: right 30%;
             background-attachment: fixed;
         }
 
@@ -981,7 +1021,7 @@
         /* Lessons — studio kit ghost from right */
         .lessons-kit-ghost {
             position: absolute;
-            right: -40px;
+            right: -100px;
             top: 50%;
             transform: translateY(-50%);
             width: 50%;
@@ -1447,6 +1487,14 @@
         </div>
     </div>
 </section>
+
+<!-- ================================================================
+     OLD SCHOOL BANNER
+================================================================ -->
+<div class="old-school-banner">
+    <img src="images/old-school-banner.jpg" alt="Scott Jones — original website artwork, circa 2011">
+    <p class="old-school-caption">Original website artwork · 2011 · Design by LA artist</p>
+</div>
 
 <footer>
     <p>© 2025 Scott Jones · Chapel Hill, NC · Drummer · Educator · Improviser</p>
