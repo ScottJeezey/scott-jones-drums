@@ -992,19 +992,16 @@
         .music-kit-ghost {
             position: absolute;
             right: 0;
-            top: 0;
-            bottom: 0;
-            width: 45%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 36%;
             pointer-events: none;
             z-index: 0;
             opacity: 0.55;
-            background-image: url('images/gone-ghosts-kit.jpg?v=7');
-            background-size: cover;
-            background-position: center center;
-            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%);
-            mask-image: linear-gradient(to right, transparent 0%, black 18%);
+            -webkit-mask-image: linear-gradient(to right, transparent 0%, black 20%);
+            mask-image: linear-gradient(to right, transparent 0%, black 20%);
         }
-        .music-kit-ghost img { display: none; }
+        .music-kit-ghost img { width: 100%; display: block; }
 
         /* Lessons — studio kit ghost from right */
         .lessons-kit-ghost {
@@ -1307,7 +1304,7 @@
      THE MUSIC
 ================================================================ -->
 <section id="music">
-    <div class="music-kit-ghost"><img src="images/gone-ghosts-kit.jpg?v=5" alt=""></div>
+    <div class="music-kit-ghost"><img src="images/gone-ghosts-kit.jpg?v=8" alt=""></div>
     <div class="inner">
         <p class="section-label fade-up">Live & Recorded</p>
         <h2 class="section-title fade-up"><span class="grad-text">The</span> Music</h2>
