@@ -658,6 +658,93 @@
         }
 
         /* ============================================================
+           PROJECTS SECTION
+        ============================================================ */
+        #projects {
+            position: relative;
+        }
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+            gap: 1.75rem;
+            margin-top: 0.5rem;
+        }
+        .project-card {
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 14px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+        }
+        .project-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--gold-border);
+            box-shadow: 0 10px 40px rgba(232,160,32,0.12);
+        }
+        .project-image {
+            width: 100%;
+            aspect-ratio: 16/10;
+            background: #000;
+            overflow: hidden;
+            display: block;
+            padding: 1.25rem;
+            box-sizing: border-box;
+        }
+        .project-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+            display: block;
+        }
+        .project-info {
+            padding: 1.25rem 1.5rem 1.5rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+            flex: 1;
+        }
+        .project-name {
+            font-size: 1.35rem;
+            font-weight: 700;
+            color: var(--gold);
+            letter-spacing: 0.02em;
+        }
+        .project-tagline {
+            color: var(--muted);
+            font-size: 0.95rem;
+            line-height: 1.5;
+            flex: 1;
+        }
+        .project-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-top: 0.75rem;
+        }
+        .project-link {
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            background: rgba(232,160,32,0.1);
+            border: 1px solid rgba(232,160,32,0.3);
+            color: var(--gold);
+            border-radius: 999px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background 0.2s, border-color 0.2s, transform 0.15s;
+        }
+        .project-link:hover {
+            background: rgba(232,160,32,0.2);
+            border-color: var(--gold);
+            transform: translateY(-1px);
+        }
+        @media (max-width: 768px) {
+            .projects-grid { grid-template-columns: 1fr; }
+        }
+
+        /* ============================================================
            LESSONS SECTION
         ============================================================ */
         #lessons {
@@ -738,6 +825,7 @@
             font-size: 0.9rem;
             line-height: 1.65;
         }
+        .pricing-card p strong { color: var(--gold); font-weight: 600; }
 
         /* Philosophy highlight */
         .philosophy-highlight {
@@ -1086,6 +1174,7 @@
     <ul class="nav-links">
         <li><a href="#bio">Bio</a></li>
         <li><a href="#music">Music</a></li>
+        <li><a href="#projects">Projects</a></li>
         <li><a href="#lessons">Lessons</a></li>
         <li><a href="#contact">Contact</a></li>
     </ul>
@@ -1338,6 +1427,21 @@
 <div class="lotus-divider"><span class="lotus-glyph">❋</span></div>
 
 <!-- ================================================================
+     PROJECTS
+================================================================ -->
+<section id="projects">
+    <div class="inner">
+        <p class="section-label fade-up">Bands & Collaborations</p>
+        <h2 class="section-title fade-up"><span class="grad-text">The</span> Projects</h2>
+        <p class="section-sub fade-up">Other bands and groups Scott plays with</p>
+
+        <div class="projects-grid" id="projects-grid"></div>
+    </div>
+</section>
+
+<div class="lotus-divider"><span class="lotus-glyph">❋</span></div>
+
+<!-- ================================================================
      LESSONS
 ================================================================ -->
 <section id="lessons">
@@ -1400,7 +1504,7 @@
                     <div class="pricing-card">
                         <h4>30 Minutes</h4>
                         <div class="rate">$45 <span>/ session</span></div>
-                        <p>Focused, targeted work — great for a specific technique, pattern, or concept. In-person or online.</p>
+                        <p>Focused, targeted work — great for a specific technique, pattern, or concept. <strong>Also great for kids.</strong> In-person or online.</p>
                     </div>
                 </div>
             </div>
@@ -1513,6 +1617,11 @@ const SPOTIFY = [
         title: "Gone Ghosts",
         note:  "Scott on drums"
     },
+    {
+        url:   "https://open.spotify.com/embed/album/2Bgjfz2Y4wbrSCNYTxCWIk",
+        title: "Chinatown Bus",
+        note:  "The Bleeding Hearts"
+    },
     // Add more albums below:
     // { url: "https://open.spotify.com/embed/album/XXXXXXX", title: "Album Name", note: "Scott on drums" },
 ];
@@ -1542,6 +1651,31 @@ const VIDEOS = [
     { type: "instagram", url: "https://www.instagram.com/reel/DMogW8qse7z/?igsh=MXVrbmI5cDFhdzZyeQ==" },
     { type: "youtube",   url: "https://www.youtube.com/embed/1AVyMtxgBh4" },
     { type: "youtube",   url: "https://www.youtube.com/embed/i02OtNqk-H4" },
+];
+
+// ╔══════════════════════════════════════════════════════════════════╗
+// ║  PROJECTS — bands and collaborations                             ║
+// ║  Each project: { name, tagline, image, links: [{ label, url }] } ║
+// ║  Place image files in /images/. Links render as outbound buttons.║
+// ╚══════════════════════════════════════════════════════════════════╝
+const PROJECTS = [
+    {
+        name: "The Bleeding Hearts",
+        tagline: "Raleigh, NC rock band — Scott on drums and vocals",
+        image: "images/bleeding-hearts.png",
+        links: [
+            { label: "Facebook",  url: "https://www.facebook.com/thebleedingheartsrock" },
+            { label: "Instagram", url: "https://www.instagram.com/thebleedingheartsrock" }
+        ]
+    },
+    {
+        name: "The Upward Dogs",
+        tagline: "Improvisational groove collective led by Scott — danceable jazz-funk vibes",
+        image: "images/upward-dogs.jpg",
+        links: [
+            { label: "Visit Site", url: "https://upward-dogs.vercel.app" }
+        ]
+    }
 ];
 
 
@@ -1606,6 +1740,31 @@ function buildSpotifySection() {
                 allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
                 loading="lazy">
             </iframe>`;
+        grid.appendChild(card);
+    });
+}
+
+/* ---- Projects section ---- */
+function buildProjectsSection() {
+    if (!PROJECTS || PROJECTS.length === 0) return;
+    const grid = document.getElementById("projects-grid");
+
+    PROJECTS.forEach((p, i) => {
+        const card = document.createElement("div");
+        card.className = "project-card fade-up";
+        card.style.transitionDelay = `${i * 0.1}s`;
+
+        const linksHtml = p.links.map(l =>
+            `<a class="project-link" href="${l.url}" target="_blank" rel="noopener">${l.label}</a>`
+        ).join("");
+
+        card.innerHTML = `
+            <div class="project-image"><img src="${p.image}" alt="${p.name}"></div>
+            <div class="project-info">
+                <div class="project-name">${p.name}</div>
+                <div class="project-tagline">${p.tagline}</div>
+                <div class="project-links">${linksHtml}</div>
+            </div>`;
         grid.appendChild(card);
     });
 }
@@ -1679,6 +1838,7 @@ document.addEventListener("DOMContentLoaded", () => {
     buildStarfield();
     buildFeaturedVideo();
     buildSpotifySection();
+    buildProjectsSection();
     buildVideoGallery();
     loadInstagramEmbeds();
     initFadeIns();
